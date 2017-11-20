@@ -1,0 +1,101 @@
+var x=document.getElementsByTagName("tbody")[1];
+var i,quest_num=1;right=0,wrong=0,left=0;
+var quest=[],right_q=[],wrong_q=[],left_q=[];
+for(i=0;i<=500;i++){
+var y=x.getElementsByTagName("td")[i].innerHTML;
+if(y.indexOf('Correct Answer:')>=0)
+{
+var z=x.getElementsByTagName("td")[i+1].innerHTML;
+if(z.indexOf('NOT ANSWERED')>=0){
+quest[quest_num]=-1;
+quest_num++;
+continue;
+}
+var correct_answer=(y.slice(y.indexOf('</b>')+4)).trim();
+var candidate_answer=(z.slice(z.indexOf('</b>')+4)).trim();
+if(correct_answer===candidate_answer){
+quest[quest_num]=1;
+quest_num++;
+}
+else{
+quest[quest_num]=0;
+quest_num++;
+}
+}
+}
+for(i=0;i<=99;i++){
+if (quest[i+1]===1){
+right++;
+right_q.push(i+1);
+}
+else if (quest[i+1]===-1){
+left++;
+left_q.push(i+1);
+}
+else{
+wrong++;
+wrong_q.push(i+1);
+}
+}
+clear();
+console.log("Number of right questions : "+right);
+console.log("Number of wrong questions : "+wrong);
+console.log("Number of left questions : "+left);
+var total_marks=right*2-(wrong/2);
+console.log("Total marks : "+ total_marks);
+console.log("Correctly marked question number : "+right_q);
+console.log("Wrongly marked question number : "+wrong_q);
+console.log("Not marked question number : "+left_q);
+
+
+------------------------------------------------------------------------------------------------------
+
+var x=document.getElementsByTagName("tbody")[1];
+var i,quest_num=1;right=0,wrong=0,left=0;
+var quest=[],right_q=[],wrong_q=[],left_q=[];
+for(i=0;i<=1000;i++){
+var y=x.getElementsByTagName("td")[i].innerHTML;
+if(y.indexOf('Correct Answer:')>=0)
+{
+var z=x.getElementsByTagName("td")[i+1].innerHTML;
+if(z.indexOf('NOT ANSWERED')>=0){
+quest[quest_num]=-1;
+quest_num++;
+continue;
+}
+var correct_answer=(y.slice(y.indexOf('</b>')+4)).trim();
+var candidate_answer=(z.slice(z.indexOf('</b>')+4)).trim();
+if(correct_answer===candidate_answer){
+quest[quest_num]=1;
+quest_num++;
+}
+else{
+quest[quest_num]=0;
+quest_num++;
+}
+}
+}
+for(i=0;i<=199;i++){
+if (quest[i+1]===1){
+right++;
+right_q.push(i+1);
+}
+else if (quest[i+1]===-1){
+left++;
+left_q.push(i+1);
+}
+else{
+wrong++;
+wrong_q.push(i+1);
+}
+}
+clear();
+console.log("Number of right questions : "+right);
+console.log("Number of wrong questions : "+wrong);
+console.log("Number of left questions : "+left);
+var total_marks=right-(wrong/4);
+console.log("Total marks : "+ total_marks);
+console.log("Correctly marked question number : "+right_q);
+console.log("Wrongly marked question number : "+wrong_q);
+console.log("Not marked question number : "+left_q);
+
